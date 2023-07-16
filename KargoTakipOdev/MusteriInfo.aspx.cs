@@ -18,7 +18,7 @@ namespace KargoTakipOdev
         SqlConnection con;
         SqlCommand cmd;
         SqlDataAdapter adapter;
-        DataTable dt;
+        DataTable dt; 
 
         public void DataLoad()
         {
