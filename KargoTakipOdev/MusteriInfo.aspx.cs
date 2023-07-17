@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -55,14 +54,14 @@ namespace KargoTakipOdev
             txtKargoNo.Text = dgViewMusteriler.SelectedRow.Cells[6].Text;
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnAdd_Click(object sender, EventArgs e)
         {
             if (txtAd.Text != "" && txtSoyad.Text != "" && txtKargoNo.Text != "")
             {
                 using (con = new SqlConnection(cs))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("Insert Into Students (MusteriAd, MusteriSoyAd, MusteriAdres, MusteriTelefon, MusteriKargoNo) Values(@MusteriAd, @MusteriSoyAd, @MusteriAdres, @MusteriTelefon, @MusteriKargoNo)", con);
+                    SqlCommand cmd = new SqlCommand("Insert Into Musteriler (MusteriAd, MusteriSoyAd, MusteriAdres, MusteriTelefon, MusteriKargoNo) Values(@MusteriAd, @MusteriSoyAd, @MusteriAdres, @MusteriTelefon, @MusteriKargoNo)", con);
 
                     cmd.Parameters.AddWithValue("@MusteriAd", txtAd.Text);
                     cmd.Parameters.AddWithValue("@MusteriSoyAd", txtSoyad.Text);
@@ -77,7 +76,7 @@ namespace KargoTakipOdev
             }
             else
             {
-                lblMessage.Text = "Fill All Information";
+                lblMessage.Text = "LÜTFEN GEREKLİ ALANLARI DOLDURUNUZ!";
             }
         }
 
@@ -94,13 +93,14 @@ namespace KargoTakipOdev
                 using (con = new SqlConnection(cs))
                 {
                     con.Open();
-                    cmd = new SqlCommand("Update Into Students Set MusteriAd=@MusteriAd, MusteriSoyAd=@MusteriSoyAd, MusteriAdres=@MusteriAdres, MusteriTelefon=@MusteriTelefon, MusteriKargoNo=@MusteriKargoNo)", con);
+                    cmd = new SqlCommand("Update Musteriler Set MusteriAd=@MusteriAd, MusteriSoyAd=@MusteriSoyAd, MusteriAdres=@MusteriAdres, MusteriTelefon=@MusteriTelefon, MusteriKargoNo=@MusteriKargoNo Where MusteriId=@MusteriId", con);
 
-                    cmd.Parameters.AddWithValue("@MusteriId", txtAd.Text);
+                    cmd.Parameters.AddWithValue("@MusteriAd", txtAd.Text);
                     cmd.Parameters.AddWithValue("@MusteriSoyAd", txtSoyad.Text);
                     cmd.Parameters.AddWithValue("@MusteriAdres", txtAdres.Text);
                     cmd.Parameters.AddWithValue("@MusteriTelefon", txtTelefon.Text);
                     cmd.Parameters.AddWithValue("@MusteriKargoNo", txtKargoNo.Text);
+                    cmd.Parameters.AddWithValue("@MusteriId", lblMusteriId.Text);
                     cmd.ExecuteNonQuery();
                     con.Close();
                     DataLoad();
