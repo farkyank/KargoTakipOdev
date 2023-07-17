@@ -109,7 +109,7 @@ namespace KargoTakipOdev
             }
             else
             {
-                lblMessage.Text = "Fill All Information";
+                lblMessage.Text = "LÜTFEN GEREKLİ ALANLARI DOLDURUNUZ!";
             }
         }
 
