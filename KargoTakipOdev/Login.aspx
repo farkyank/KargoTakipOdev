@@ -30,7 +30,7 @@
 
                 <asp:Panel ID="Panel1" runat="server">
                     <asp:Label ID="Label1" runat="server" Text="sifre"></asp:Label>
-                    <asp:TextBox ID="txtPassword" runat="server" CssClass="auto-style2" Width="120px" placeholder="sifre"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" CssClass="auto-style2" Width="120px" placeholder="sifre"></asp:TextBox>
                 </asp:Panel>
 
                 <p>

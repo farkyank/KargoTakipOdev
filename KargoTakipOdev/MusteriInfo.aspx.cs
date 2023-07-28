@@ -17,7 +17,7 @@ namespace KargoTakipOdev
         SqlConnection con;
         SqlCommand cmd;
         SqlDataAdapter adapter;
-        DataTable dt; 
+        DataTable dt;
 
         public void DataLoad()
         {
@@ -68,7 +68,7 @@ namespace KargoTakipOdev
                     cmd.Parameters.AddWithValue("@MusteriAdres", txtAdres.Text);
                     cmd.Parameters.AddWithValue("@MusteriTelefon", txtTelefon.Text);
                     cmd.Parameters.AddWithValue("@MusteriKargoNo", txtKargoNo.Text);
-                    cmd.ExecuteNonQuery(); 
+                    cmd.ExecuteNonQuery();
                     con.Close();
                     DataLoad();
                     ClearAllData();
@@ -127,11 +127,33 @@ namespace KargoTakipOdev
             }
         }
 
+       
+
         protected void btnCancel_Click1(object sender, EventArgs e)
         {
             ClearAllData();
         }
 
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Sil")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+
+                using (con = new SqlConnection(cs))
+                {
+                    con.Open();
+                    cmd = new SqlCommand("Delete From Musteriler where MusteriId=@MusteriId", con);
+                    cmd.Parameters.AddWithValue("@MusteriId", id);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    DataLoad();
+                    ClearAllData();
+                }
+                Response.Redirect("MusteriInfo.aspx");
+            }
+        }
 
     }
+
 }
