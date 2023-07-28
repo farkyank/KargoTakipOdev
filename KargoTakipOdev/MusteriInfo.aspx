@@ -47,7 +47,7 @@
             <td class="auto-style3" rowspan="9">
                 <asp:GridView ID="dgViewMusteriler"  runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="MusteriId" DataSourceID="SqlDataSource1" Height="200px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="533px" CssClass="auto-style6">
                     <Columns>
-                        <asp:CommandField ShowSelectButton="True" HeaderText="Seçin"/>
+                        <asp:CommandField SelectText="Seç" ShowSelectButton="True" HeaderText="Seçin" ButtonType="Button" ControlStyle-Font-Bold="true" />
                         <asp:BoundField DataField="MusteriId" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="MusteriId" />
                         <asp:BoundField DataField="MusteriAd" HeaderText="AD" SortExpression="MusteriAd" />
                         <asp:BoundField DataField="MusteriSoyAd" HeaderText="SOYAD" SortExpression="MusteriSoyAd" />
@@ -99,7 +99,7 @@
             <td class="auto-style5">
                 <asp:TextBox ID="txtTelefon" runat="server" Width="223px"></asp:TextBox>
             </td>
-            <td class="auto-style5"></td>
+            <td class="auto-style5">&nbsp;</td>
         </tr>
         <tr>
             <td class="auto-style2">

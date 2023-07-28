@@ -68,7 +68,7 @@ namespace KargoTakipOdev
                     cmd.Parameters.AddWithValue("@MusteriAdres", txtAdres.Text);
                     cmd.Parameters.AddWithValue("@MusteriTelefon", txtTelefon.Text);
                     cmd.Parameters.AddWithValue("@MusteriKargoNo", txtKargoNo.Text);
-                    cmd.ExecuteNonQuery();  
+                    cmd.ExecuteNonQuery(); 
                     con.Close();
                     DataLoad();
                     ClearAllData();
